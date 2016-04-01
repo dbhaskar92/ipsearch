@@ -1,0 +1,38 @@
+Usage: ipsearch.pl  [Options]
+
+        Options:
+                --ip=[ip address to search]
+                        Where [ip address to search] is a valid ip address to search for.
+                --hostname=[hostname]
+                        Where [hostname] is a valid hostname to search for.
+                --address-file=[file]
+                        Where [file] is the name of a file containing addresses to search for, one per line.
+                --config-file=[file]
+                        Where [file] is the configuration file to use.
+                -s|--summary:  Prints out a summary of the addresses found.
+                --no-host: Do not perform lookups on hostnames
+                --file=[extrastring:]filename  Where filename is the name of another log file to search
+                         And where [extrastring:] is another string that must be found for any matches for this file.
+                -h|--help: Prints this help screen
+Examples:
+        ipsearch.pl --ip=127.0.0.1
+                Searches for all occurances of the ip address 127.0.0.1 in the log files
+        ipsearch.pl --hostname=abc.xyz.com
+                Searchs for all occurances of hostname abc.xyz.com in the log files.
+
+
+Address File:
+    The address file is a file which contains ip addresses or hostnames, one per line.  For example:
+
+addresses:
+127.0.0.1
+127.0.0.2
+localhost
+
+Config File:
+    The config file is a file used to define the log files to search for addresses.
+
+Ip address wildcards:
+	Groups of IP addresses can be searched for by leaving out poritions of the address. 
+	For example '--ip=127.0.0.' will search for all ip addresses beginning with '127.0.0.' 
+	Note: In this case, hostname searching is not performed.
